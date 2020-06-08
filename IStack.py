@@ -38,13 +38,14 @@ class IStack(SimpleStack):
 		if self.isEmpty():
 			raise StackEmptyException()
 		else:
-			return self.stack[top]
+			return self.stack[self.top]
 
 	def isFull(self, capacity):
 		if self.top > capacity-1:
 			return True
 		else:
 			return False
+
 
 	def Push(self, value, capacity):
 		if self.isFull(capacity) == True:
@@ -56,8 +57,9 @@ class IStack(SimpleStack):
 		if self.isEmpty():
 			raise StackEmptyException()
 		else:
-			--self.top
-			self.stack[top]
+			tmp = self.stack[self.top]
+			del self.stack[self.top]	
+			return tmp
 
 	def isEmpty(self):
 		if len(self.stack)==0:
